@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodPal.Providers.API", "src\FoodPal.Providers.API\FoodPal.Providers.API.csproj", "{980B1FD5-151B-4148-BD40-39A9C42B02A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodPal.Providers.DataAccess", "src\FoodPal.Providers.DataAccess\FoodPal.Providers.DataAccess.csproj", "{5D83581F-857D-489C-8D85-69257D55D10F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodPal.Providers.DomainModels", "src\FoodPal.Providers.DomainModels\FoodPal.Providers.DomainModels.csproj", "{C773C15A-C02A-4769-8F91-D7405CE6CE8F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodPal.Providers.Dtos", "src\FoodPal.Providers.Dtos\FoodPal.Providers.Dtos.csproj", "{FCA9D162-2378-4BDC-B1A0-1BE57C8A1019}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodPal.Providers.Services", "src\FoodPal.Providers.Services\FoodPal.Providers.Services.csproj", "{594DC7DE-4E29-4B25-8F85-C3BA57B2CBB4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{980B1FD5-151B-4148-BD40-39A9C42B02A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{980B1FD5-151B-4148-BD40-39A9C42B02A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{980B1FD5-151B-4148-BD40-39A9C42B02A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{980B1FD5-151B-4148-BD40-39A9C42B02A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D83581F-857D-489C-8D85-69257D55D10F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D83581F-857D-489C-8D85-69257D55D10F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D83581F-857D-489C-8D85-69257D55D10F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D83581F-857D-489C-8D85-69257D55D10F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C773C15A-C02A-4769-8F91-D7405CE6CE8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C773C15A-C02A-4769-8F91-D7405CE6CE8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C773C15A-C02A-4769-8F91-D7405CE6CE8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C773C15A-C02A-4769-8F91-D7405CE6CE8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCA9D162-2378-4BDC-B1A0-1BE57C8A1019}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCA9D162-2378-4BDC-B1A0-1BE57C8A1019}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCA9D162-2378-4BDC-B1A0-1BE57C8A1019}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCA9D162-2378-4BDC-B1A0-1BE57C8A1019}.Release|Any CPU.Build.0 = Release|Any CPU
+		{594DC7DE-4E29-4B25-8F85-C3BA57B2CBB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{594DC7DE-4E29-4B25-8F85-C3BA57B2CBB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{594DC7DE-4E29-4B25-8F85-C3BA57B2CBB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{594DC7DE-4E29-4B25-8F85-C3BA57B2CBB4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {95DF66BE-6764-4DFA-9EDB-46BA7BA78542}
+	EndGlobalSection
+EndGlobal

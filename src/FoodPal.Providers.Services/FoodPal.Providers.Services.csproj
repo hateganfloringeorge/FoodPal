@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\FoodPal.Providers.DataAccess\FoodPal.Providers.DataAccess.csproj" />
+		<ProjectReference Include="..\FoodPal.Providers.Dtos\FoodPal.Providers.Dtos.csproj" />
+	</ItemGroup>
+
+</Project>
