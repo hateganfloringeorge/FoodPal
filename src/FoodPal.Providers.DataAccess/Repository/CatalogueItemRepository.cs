@@ -20,7 +20,7 @@ namespace FoodPal.Providers.DataAccess.Repository
                 .Include(i => i.Category)
                 .Include(i => i.Catalogue)
                 .ThenInclude(c => c.Provider)
-                .Where(x => x.Id == providerId)
+                .Where(x => x.Catalogue.ProviderId == providerId)
                 .ToListAsync();
         }
 
