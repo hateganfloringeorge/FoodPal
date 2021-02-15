@@ -1,0 +1,318 @@
+{
+  "info": {
+    "_postman_id": "7f53b87f-6e77-47cf-8b8d-8e3e55c37b10",
+    "name": "School4.NET",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get all providers",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/xml",
+            "type": "text",
+            "disabled": true
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:5000/api/providers/",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "providers",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get provider",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/providers/{id}?includeCatalogueItems=true",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "providers",
+            "{id}"
+          ],
+          "query": [
+            {
+              "key": "includeCatalogueItems",
+              "value": "true"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Add Provider",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"The Artist Restaurant\",\r\n  \"description\": \"We welcome you with a modern and elegant ambiance with an artistic touch… \",\r\n  \"location\": \"Calea Victoriei 147, Sector 1,  Bucharest\",\r\n  \"catalogue\": {\r\n    \"description\": \"CaleaVictoriei\",    \r\n    \"providerId\": 0\r\n  },\r\n  \"categoryId\":1,\r\n  \"customerId\": 1\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/providers/",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "providers",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update provider",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"id\": 1,\r\n  \"name\": \"Testing the update verb\",\r\n  \"description\": \"Best food in town\",\r\n  \"location\": \"Afi Park 5\",\r\n  \"catalogue\": {\r\n    \"id\":1,\r\n    \"description\": \"Main location\",    \r\n    \"providerId\": 2\r\n  },\r\n  \"categoryId\":3,\r\n  \"customerId\": 1\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/providers/{id}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "providers",
+            "{id}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update catalogueItem",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"Name\": \"Chicken soup\",\r\n    \"CategoryId\": 3,\r\n    \"CatalogueId\" {catalogueId},\r\n    \"Price\": 25.25\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/providers/{providerId}/menu/{itemId}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "providers",
+            "{providerId}",
+            "menu",
+            "{itemId}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete provider",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/providers/{id}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "providers",
+            "{id}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get catalogueItems per provider",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/providers/{providerId}/menu",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "providers",
+            "{providerId}",
+            "menu"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get catalogueItem by Id",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/providers/{providerId}/menu/{itemId}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "providers",
+            "{providerId}",
+            "menu",
+            "{itemId}"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Add catalogueItem",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"Id\": 10,\r\n    \"Name\": \"Strawberry pie\",\r\n    \"CategoryId\": 2,\r\n    \"CatalogueId\" : {catalogueId},\r\n    \"Price\": 25.25\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/providers/{providerId}/menu",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "providers",
+            "{providerId}",
+            "menu"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete catalogueItem",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/providers/{providerId}/menu/{itemId}",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5000",
+          "path": [
+            "api",
+            "providers",
+            "{providerId}",
+            "menu",
+            "{itemId}"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

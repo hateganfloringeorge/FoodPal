@@ -5,6 +5,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<ProjectReference Include="..\FoodPal.Providers.DataAccess\FoodPal.Providers.DataAccess.csproj" />
 		<ProjectReference Include="..\FoodPal.Providers.Dtos\FoodPal.Providers.Dtos.csproj" />
 	</ItemGroup>

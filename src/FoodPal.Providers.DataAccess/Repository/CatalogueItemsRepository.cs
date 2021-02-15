@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace FoodPal.Providers.DataAccess.Repository
 {
-    public class CatalogueItemRepository : Repository<CatalogueItem>, ICatalogueItemRepository
+    public class CatalogueItemsRepository : Repository<CatalogueItem>, ICatalogueItemsRepository
     {
 
-        public CatalogueItemRepository(ProvidersContext providersContext) : base(providersContext)
+        public CatalogueItemsRepository(ProvidersContext providersContext) : base(providersContext)
         {
 
         }
 
-        public async Task<IEnumerable<CatalogueItem>> GetAllWithProviderIdAsync(int providerId)
+        public async Task<IEnumerable<CatalogueItem>> GetAllWithProviderAsync(int providerId)
         {
             return await _providersContext.CatalogueItems
                 .Include(i => i.Category)
@@ -31,6 +31,11 @@ namespace FoodPal.Providers.DataAccess.Repository
                .Include(i => i.Catalogue)
                .ThenInclude(c => c.Provider)
                .SingleOrDefaultAsync(x => x.Id == catalogueItemId);
+        }
+
+        public Task<CatalogueItem> GetWithProviderByIdAsync(int catalogueItemId)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
