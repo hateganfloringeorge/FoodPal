@@ -4,6 +4,8 @@ namespace FoodPal.Providers.Dtos
 {
     public class CatalogueItemDto
     {
+        public int Id { get; set; }
+
         [MaxLength(150)]
         [Required]
         public string Name { get; set; }
