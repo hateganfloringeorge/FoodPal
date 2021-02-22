@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FoodPal.Orders.Data.Repositories
 {
-    public class OrdersRepository : IOrdersRepository
+	public class OrdersRepository : IOrdersRepository
 	{
 		private readonly OrdersContext _ordersContext;
 
@@ -31,83 +31,46 @@ namespace FoodPal.Orders.Data.Repositories
 			}
 			catch (Exception ex)
 			{
-				throw new Exception($"Order could not be saved. Reason:{ex.Message}");
+				throw new Exception($"Order could not be saved. Reason:{ex.Message}", ex);
 			}
 		}
 
 		public async Task<Order> GetByIdAsync(int orderId)
 		{
-			try
-            {
-				return await _ordersContext.Orders
-					.Where(x => x.Id == orderId)
-					.SingleOrDefaultAsync();
-            }
-			catch (Exception ex)
-			{
-				throw new Exception($"Order could not be retrieved. Reason:{ex.Message}");
-			}
+			return await _ordersContext.Orders
+				.Include(x => x.Items)
+				.Include(x => x.DeliveryDetails)
+				.FirstOrDefaultAsync(x => x.Id == orderId);
 		}
 
 		public async Task<(IEnumerable<Order> Orders, int AllOrdersCount)> GetByFiltersAsync(string customerId, OrderStatus? status, int page, int pageSize)
 		{
-			if (customerId == null) throw new ArgumentNullException(nameof(customerId));
+			IQueryable<Order> ordersQuery = _ordersContext.Orders.AsNoTracking();
 
-			try
-            {
-				// considered page indexing starting from 1
-				var orderList = await _ordersContext.Orders
-					.Where(x => x.CustomerId == customerId)
-					.Where(x => status == null || x.Status == status)
-					.Skip((page - 1) * pageSize)
-					.Take(pageSize)
-					.ToListAsync();
+			if (!string.IsNullOrEmpty(customerId))
+				ordersQuery = _ordersContext.Orders.Where(x => x.CustomerId == customerId);
 
-				return (orderList, orderList.Count);
-			}
-			catch (Exception ex)
-			{
-				throw new Exception($"Orders could not be retrieved. Reason:{ex.Message}");
-			}
+			if (status.HasValue)
+				ordersQuery = ordersQuery.Where(x => x.Status == status.Value);
+
+			var paginatedOrdersQuery = ordersQuery.Skip(page * pageSize).Take(pageSize);
+
+			var ordersList = await paginatedOrdersQuery.ToListAsync();
+			var allOrdersCount = await ordersQuery.CountAsync();
+
+			return (ordersList, allOrdersCount);
 		}
 
 		public async Task<OrderStatus?> GetStatusAsync(int orderId)
 		{
-			try
-            {
-				var order = await _ordersContext.Orders
-					.Where(x => x.Id == orderId)
-					.SingleOrDefaultAsync();
-
-				if (order == null) return null;
-
-				return order.Status;
-            }
-			catch (Exception ex)
-			{
-				throw new Exception($"Order status could not be retrieved. Reason:{ex.Message}");
-			}
+			var orderStatus = await _ordersContext.Orders.Where(x => x.Id == orderId).Select(x => x.Status).ToListAsync();
+			return orderStatus.FirstOrDefault();
 		}
 
 		public async Task UpdateStatusAsync(Order orderEntity, OrderStatus newStatus)
 		{
-			if (orderEntity == null) throw new ArgumentNullException(nameof(orderEntity));
-
-			try
-            {
-				var order = await _ordersContext.Orders
-					.SingleOrDefaultAsync(x => x.Id == orderEntity.Id);
-
-				if (order == null) throw new Exception("Order could not be found!");
-
-				order.Status = newStatus;
-				_ordersContext.Orders.Update(order);
-				await _ordersContext.SaveChangesAsync();
-			}
-			catch (Exception ex)
-			{
-				throw new Exception($"Order status could not be updated. Reason:{ex.Message}");
-			}
+			orderEntity.Status = newStatus;
+			await _ordersContext.SaveChangesAsync();
 		}
 	}
 }
