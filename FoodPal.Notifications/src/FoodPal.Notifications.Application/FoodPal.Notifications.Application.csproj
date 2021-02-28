@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AutoMapper" Version="10.1.1" />
+		<PackageReference Include="FluentValidation" Version="9.5.1" />
+		<PackageReference Include="MediatR" Version="9.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\FoodPal.Notifications.Data.Abstractions\FoodPal.Notifications.Data.Abstractions.csproj" />
+		<ProjectReference Include="..\FoodPal.Notifications.Domain\FoodPal.Notifications.Domain.csproj" />
+		<ProjectReference Include="..\FoodPal.Notifications.Dto\FoodPal.Notifications.Dto.csproj" />
+		<ProjectReference Include="..\FoodPal.Notifications.Service.Abstractions\FoodPal.Notifications.Service.Abstractions.csproj" />
+	</ItemGroup>
+
+</Project>

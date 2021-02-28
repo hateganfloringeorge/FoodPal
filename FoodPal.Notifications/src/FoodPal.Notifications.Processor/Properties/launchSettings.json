@@ -1,0 +1,10 @@
+﻿{
+  "profiles": {
+    "FoodPal.Notifications.Processor": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

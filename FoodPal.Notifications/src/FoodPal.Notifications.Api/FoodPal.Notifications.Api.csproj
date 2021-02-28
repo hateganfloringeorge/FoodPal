@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+		<UserSecretsId>e2d9caa4-b9dc-40f9-9997-c942c0f9b523</UserSecretsId>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="MassTransit" Version="7.1.5" />
+		<PackageReference Include="MassTransit.Azure.ServiceBus.Core" Version="7.1.5" />
+		<PackageReference Include="MassTransit.Extensions.DependencyInjection" Version="7.1.5" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.1" NoWarn="NU1605" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="5.0.1" NoWarn="NU1605" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\FoodPal.Contracts\FoodPal.Contracts.csproj" />
+		<ProjectReference Include="..\FoodPal.Notifications.Common\FoodPal.Notifications.Common.csproj" />
+		<ProjectReference Include="..\FoodPal.Notifications.Dto\FoodPal.Notifications.Dto.csproj" />
+	</ItemGroup>
+
+</Project>

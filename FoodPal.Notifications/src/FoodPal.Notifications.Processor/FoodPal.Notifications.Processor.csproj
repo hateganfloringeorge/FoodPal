@@ -1,0 +1,58 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net5.0</TargetFramework>
+		<UserSecretsId>1dc8e922-225f-4538-ba3b-f236d4453f5f</UserSecretsId>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Remove="appsettings.Development.json" />
+		<None Remove="appsettings.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="appsettings.Development.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+		<Content Include="appsettings.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AutoMapper" Version="10.1.1" />
+		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="9.5.1" />
+		<PackageReference Include="MassTransit" Version="7.1.5" />
+		<PackageReference Include="MassTransit.Azure.ServiceBus.Core" Version="7.1.5" />
+		<PackageReference Include="MassTransit.Extensions.DependencyInjection" Version="7.1.5" />
+		<PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="1.1.6" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.3">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="5.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\FoodPal.Contracts\FoodPal.Contracts.csproj" />
+		<ProjectReference Include="..\FoodPal.Notifications.Common\FoodPal.Notifications.Common.csproj" />
+		<ProjectReference Include="..\FoodPal.Notifications.Data.Abstractions\FoodPal.Notifications.Data.Abstractions.csproj" />
+		<ProjectReference Include="..\FoodPal.Notifications.Data\FoodPal.Notifications.Data.csproj" />
+		<ProjectReference Include="..\FoodPal.Notifications.Mappers\FoodPal.Notifications.Mappers.csproj" />
+		<ProjectReference Include="..\FoodPal.Notifications.Messages\FoodPal.Notifications.Messages.csproj" />
+		<ProjectReference Include="..\FoodPal.Notifications.Service.Abstractions\FoodPal.Notifications.Service.Abstractions.csproj" />
+		<ProjectReference Include="..\FoodPal.Notifications.Service.Email.Abstractions\FoodPal.Notifications.Service.Email.Abstractions.csproj" />
+		<ProjectReference Include="..\FoodPal.Notifications.Service.Email\FoodPal.Notifications.Service.Email.csproj" />
+		<ProjectReference Include="..\FoodPal.Notifications.Service\FoodPal.Notifications.Service.csproj" />
+		<ProjectReference Include="..\FoodPal.Notifications.Validations\FoodPal.Notifications.Validations.csproj" />
+	</ItemGroup>
+
+</Project>
