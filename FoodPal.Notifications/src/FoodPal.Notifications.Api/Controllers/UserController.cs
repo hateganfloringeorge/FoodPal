@@ -27,5 +27,13 @@ namespace FoodPal.Notifications.Api.Controllers
 
             return Accepted();
         }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateUser(UserDto userDto)
+        {
+            await this._publishEndpoint.Publish<IUserUpdated>(userDto);
+
+            return Accepted();
+        }
     }
 }

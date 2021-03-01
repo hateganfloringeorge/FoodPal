@@ -27,5 +27,15 @@ namespace FoodPal.Notifications.Api.Controllers
 
             return Accepted();
         }
+
+        [HttpPatch]
+        [Route("viewed/{id}")]
+        public async Task<IActionResult> MarkAsVerified(int id)
+        {
+
+            await this._publishEndpoint.Publish<INotificationViewed>(id);
+
+            return Accepted();
+        }
     }
 }

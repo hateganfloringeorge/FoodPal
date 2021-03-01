@@ -1,38 +1,33 @@
 ﻿using AutoMapper;
 using FluentValidation;
+using FoodPal.Notifications.Application.Commands;
 using FoodPal.Notifications.Application.Extensions;
 using FoodPal.Notifications.Data.Abstractions;
 using FoodPal.Notifications.Domain;
-using FoodPal.Notifications.Processor.Commands;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace FoodPal.Notifications.Application.Handlers
 {
-    public class NewUserAddedHandler : IRequestHandler<NewUserAddedCommand, bool>
+    public class UserUpdatedHandler : IRequestHandler<UserUpdatedCommand, bool>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        private readonly IValidator<NewUserAddedCommand> _validator;
+        private readonly IValidator<UserUpdatedCommand> _validator;
 
-        public NewUserAddedHandler(IUnitOfWork unitOfWork, IMapper mapper, IValidator<NewUserAddedCommand> validator)
+        public UserUpdatedHandler(IUnitOfWork unitOfWork, IMapper mapper, IValidator<UserUpdatedCommand> validator)
         {
             this._unitOfWork = unitOfWork;
             this._mapper = mapper;
             this._validator = validator;
         }
 
-        public async Task<bool> Handle(NewUserAddedCommand request, CancellationToken cancellationToken)
+        public async Task<bool> Handle(UserUpdatedCommand request, CancellationToken cancellationToken)
         {
             var userModel = this._mapper.Map<User>(request);
 
             this._validator.ValidateAndThrowEx(request);
-
-            if ( await this._unitOfWork.GetRepository<User>().FindByIdAsync(userModel.Id) is null)
-            {
-                throw new System.Exception($"Could not find user with id: { userModel.Id }.");
-            }
 
             // save to db
             this._unitOfWork.GetRepository<User>().Update(userModel);
