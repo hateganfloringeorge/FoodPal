@@ -1,0 +1,55 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+
+* {
+  font-family: "Raleway", sans-serif;
+}
+
+.heading-font {
+  font-family: "Nunito", sans-serif;
+}
+
+.glass-card {
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  position: relative;
+  z-index: 1;
+  background: inherit;
+  overflow: hidden;
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  h2 {
+    flex: 0;
+  }
+  > p {
+    font-size: 1.1rem;
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.glass-card:before {
+  content: " ";
+  position: absolute;
+  background: inherit;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.5);
+  filter: blur(10px);
+  margin: -20px;
+}

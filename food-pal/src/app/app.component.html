@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="header">
+    <div class="logo heading-font">FoodPal</div>
+    <div class="nav">
+      <button
+        mat-fab
+        title="I'm hungry"
+        color="primary"
+        [routerLink]="['/order']"
+      >
+        <mat-icon>fastfood</mat-icon>
+      </button>
+      <button mat-fab title="" color="">
+        <mat-icon></mat-icon>
+      </button>
+      <button mat-fab title="" color="">
+        <mat-icon></mat-icon>
+      </button>
+      <button mat-fab title="" color="">
+        <mat-icon></mat-icon>
+      </button>
+      <button mat-fab title="Admin" color="warn" [routerLink]="['/admin']">
+        <mat-icon>admin_panel_settings</mat-icon>
+      </button>
+    </div>
+    <div class="account-actions">
+      <button mat-button color="primary">Login</button>
+    </div>
+  </div>
+  <div class="body">
+    <router-outlet></router-outlet>
+  </div>
+  <div class="footer">
+    <span>Made with something</span>
+    <div class="social">
+      <button mat-mini-fab color="">F</button>
+      <button mat-mini-fab color="">T</button>
+      <button mat-mini-fab color="">In</button>
+      <button mat-mini-fab color="">_</button>
+      <button mat-mini-fab color="">Hi5</button>
+    </div>
+  </div>
+</div>

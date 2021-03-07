@@ -1,0 +1,22 @@
+//I suck at css and life is too short to fix this
+
+:host {
+  background: inherit;
+}
+
+.menu-grid {
+  // display: grid;
+  // grid-template-columns: repeat(auto-fill, minmax(360px, 3fr));
+  // grid-gap: 0.5rem;
+  // align-items: flex-end;
+  // justify-content: space-evenly;
+  // align-content: space-evenly;
+  // background: inherit;
+
+  display: inline;
+  background: inherit;
+}
+
+.item-id {
+  text-align: left;
+}
