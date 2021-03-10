@@ -1,0 +1,58 @@
+.edit-form {
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  padding: 20px 40px;
+  max-width: calc(100% - 140px);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1rem;
+  padding: 20px;
+
+  &:not(:last-of-type) {
+    border-right: 1px solid #cdcdcd;
+  }
+}
+
+.lg {
+  flex: 4;
+}
+
+.md {
+  flex: 2;
+}
+
+.sm {
+  flex: 1;
+}
+
+.row {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.actions {
+  flex: 0;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.fill {
+  width: 100%;
+}
+
+.container {
+  overflow-y: auto;
+  overflow-x: hidden;
+}

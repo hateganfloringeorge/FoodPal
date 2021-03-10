@@ -1,0 +1,87 @@
+<div *ngIf="data$ | async as data; else loading">
+  <form class="edit-form" [formGroup]="formGroup">
+    <div class="row">
+      <div class="column sm">
+        <div class="row">
+          <mat-form-field appearance="outline" color="accent">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Name" formControlName="name" />
+          </mat-form-field>
+          <mat-form-field appearance="outline" color="accent">
+            <mat-label>Location</mat-label>
+            <input matInput placeholder="Location" formControlName="location" />
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <mat-form-field appearance="outline" color="accent" class="fill">
+            <mat-label>Description</mat-label>
+            <textarea
+              matInput
+              placeholder="Description"
+              formControlName="description"
+            ></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="column lg" formGroupName="providerCatalogue">
+        <div class="row">
+          <mat-form-field appearance="outline" color="accent" class="fill">
+            <mat-label>Description</mat-label>
+            <textarea
+              matInput
+              placeholder="Description"
+              formControlName="description"
+            ></textarea>
+          </mat-form-field>
+        </div>
+        <div class="row" style="height: 500px">
+          <h3>Menu Items</h3>
+          <div class="container">
+            <div
+              *ngFor="let control of catalogItems.controls"
+              class="menu-item row"
+            >
+              <div class="menu-item-name column">
+                <mat-form-field
+                  appearance="outline"
+                  color="accent"
+                  class="fill"
+                >
+                  <mat-label>Name</mat-label>
+                  <input
+                    matInput
+                    placeholder="Name"
+                    [formControl]="control.get('name')"
+                  />
+                </mat-form-field>
+              </div>
+              <div class="menu-item-name column">
+                <mat-form-field
+                  appearance="outline"
+                  color="accent"
+                  class="fill"
+                >
+                  <mat-label>Price</mat-label>
+                  <input
+                    type="number"
+                    min="1"
+                    max="150"
+                    step="1"
+                    matInput
+                    placeholder="Price"
+                    [formControl]="control.get('price')"
+                  />
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row actions">
+      <button mat-raised-button color="accent" (click)="save()">Save</button>
+    </div>
+  </form>
+</div>
+<ng-template #loading> Loading... </ng-template>
