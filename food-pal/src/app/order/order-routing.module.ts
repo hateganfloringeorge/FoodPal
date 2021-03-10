@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { OrderComponent } from './order/order.component';
-import { ProviderCatalogueComponent } from './provider-catalogue/provider-catalogue.component';
-import { ProvidersListComponent } from './providers-list/providers-list.component';
+import { ProviderListComponent } from './provider-list/provider-list.component';
 
 const routes: Routes = [
   {
     path: '',
     component: OrderComponent,
     children: [
-      { path: '', component: ProvidersListComponent },
-      { path: '', component: ProviderCatalogueComponent}
+      {
+        path: '',
+        component: ProviderListComponent,
+      },
     ],
   },
 ];

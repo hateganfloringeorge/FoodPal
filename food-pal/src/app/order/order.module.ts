@@ -1,24 +1,29 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { OrderComponent } from './order/order.component';
-import { ProvidersListComponent } from './providers-list/providers-list.component';
-import { ProviderCatalogueComponent } from './provider-catalogue/provider-catalogue.component';
+
 import { OrderRoutingModule } from './order-routing.module';
-import { MatButtonModule} from '@angular/material/button';
-import { ProvidersService } from './services/orders.service';
+import { OrderComponent } from './order/order.component';
+import { ProviderListComponent } from './provider-list/provider-list.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ProvidersService } from './services/providers.service';
 import { HttpClientModule } from '@angular/common/http';
-import { MatDialogModule } from "@angular/material/dialog";
-import { MatTableModule } from '@angular/material/table';
+import { ProviderCatalogComponent } from './provider-catalog/provider-catalog.component';
 
-
-const materialImports = [MatButtonModule, MatDialogModule, MatTableModule];
+const materialImports = [MatButtonModule, MatDialogModule];
 
 @NgModule({
-  declarations: [OrderComponent, ProvidersListComponent, ProviderCatalogueComponent],
-  imports: [CommonModule, OrderRoutingModule, HttpClientModule, ...materialImports],
+  declarations: [
+    OrderComponent,
+    ProviderListComponent,
+    ProviderCatalogComponent,
+  ],
+  imports: [
+    CommonModule,
+    OrderRoutingModule,
+    HttpClientModule,
+    ...materialImports,
+  ],
   providers: [ProvidersService],
-  entryComponents: [ProviderCatalogueComponent],
-
 })
-
-export class OrderModule { }
+export class OrderModule {}

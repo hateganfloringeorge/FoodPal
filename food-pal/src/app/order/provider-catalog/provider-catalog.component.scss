@@ -1,0 +1,19 @@
+.category-list {
+  width: 400px;
+
+  .item {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin-bottom: 20px;
+
+    > span:not(:last-child) {
+      flex: 0;
+    }
+    > span:last-child {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+}

@@ -1,0 +1,12 @@
+<div class="category-list">
+  <div *ngFor="let category of data">
+    <h2>{{ category.description }}</h2>
+    <div class="item-list">
+      <div *ngFor="let item of category.items" class="item">
+        <span> {{ item.id }} </span>
+        <span> {{ item.name }}</span>
+        <span> {{ item.price }}</span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="container">
+  <div
+    *ngIf="providers$ | async as providers; else loading"
+    class="providers-list"
+  >
+    <div *ngFor="let provider of providers" class="provider-card glass-card">
+      <h2>{{ provider.name }}</h2>
+      <p>{{ provider.description }}</p>
+      <div class="actions">
+        <button
+          mat-raised-button
+          color="accent"
+          (click)="openCatalog(provider.id)"
+        >
+          Feed me!
+        </button>
+      </div>
+    </div>
+  </div>
+  <ng-template #loading> ...loading </ng-template>
+</div>

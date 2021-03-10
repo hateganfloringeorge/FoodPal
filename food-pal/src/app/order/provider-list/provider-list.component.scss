@@ -1,0 +1,25 @@
+:host {
+  background: inherit;
+}
+
+.container,
+.providers-list {
+  background: inherit;
+}
+
+.container {
+  padding: 20px 40px;
+
+  .providers-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-gap: 4rem;
+
+    .provider-card {
+      .actions {
+        display: flex;
+        flex-direction: row-reverse;
+      }
+    }
+  }
+}
