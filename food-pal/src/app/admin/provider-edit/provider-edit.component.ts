@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, NgZone, OnInit } from '@angular/core';
 import {
+  AbstractControl,
   FormArray,
   FormBuilder,
   FormControl,
@@ -7,9 +8,11 @@ import {
   ValidationErrors,
   Validators,
 } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { Provider } from '../models/provider';
+import { ItemStatus } from '../models/provider-catalogue';
 import { ProvidersService } from '../services/providers.service';
 
 @Component({
@@ -33,12 +36,15 @@ export class ProviderEditComponent implements OnInit {
 
   constructor(
     private providerSvc: ProvidersService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
   ) {}
 
   ngOnInit(): void {
+
     this.initForm();
-    this.data$ = this.providerSvc.getProvider(2).pipe(
+    const providerId = +this.route.snapshot.paramMap.get('providerId');
+    this.data$ = this.providerSvc.getProvider(providerId).pipe(
       tap((data) => {
         this.fillForm(data);
       })
@@ -84,6 +90,7 @@ export class ProviderEditComponent implements OnInit {
           id: new FormControl(item.id),
           name: new FormControl(item.name),
           price: new FormControl(item.price),
+          status: new FormControl(item.status),
         })
       );
     });
@@ -92,10 +99,18 @@ export class ProviderEditComponent implements OnInit {
   save() {
     if (this.formGroup.valid) {
       const form = this.formGroup.value;
-      console.log('new name: ', form);
+      console.log(this.catalogItems);
     } else {
       this.getFormValidationErrors();
     }
+  }
+
+  addCatalogueItem(){
+    this.catalogItems.push(this.formBuilder.group({
+      name: new FormControl(),
+      price: new FormControl(),
+      status: new FormControl(ItemStatus.Added)
+    }));
   }
 
   getFormValidationErrors() {
@@ -110,5 +125,22 @@ export class ProviderEditComponent implements OnInit {
         });
       }
     });
+  }
+
+  deleteCatalogItem(control : AbstractControl) {
+
+    var newValue = control.value;
+    if(newValue.status !== ItemStatus.Deleted)
+    {
+        newValue.status = ItemStatus.Deleted;
+        control.setValue(newValue);
+    }  
+  }
+
+  checkDeleted(control : AbstractControl): boolean {
+    if (control.value.status === ItemStatus.Deleted)
+      return false;
+    else 
+      return true;
   }
 }

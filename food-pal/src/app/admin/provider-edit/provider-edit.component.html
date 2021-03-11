@@ -41,44 +41,61 @@
               *ngFor="let control of catalogItems.controls"
               class="menu-item row"
             >
-              <div class="menu-item-name column">
-                <mat-form-field
-                  appearance="outline"
-                  color="accent"
-                  class="fill"
-                >
-                  <mat-label>Name</mat-label>
-                  <input
-                    matInput
-                    placeholder="Name"
-                    [formControl]="control.get('name')"
-                  />
-                </mat-form-field>
-              </div>
-              <div class="menu-item-name column">
-                <mat-form-field
-                  appearance="outline"
-                  color="accent"
-                  class="fill"
-                >
-                  <mat-label>Price</mat-label>
-                  <input
-                    type="number"
-                    min="1"
-                    max="150"
-                    step="1"
-                    matInput
-                    placeholder="Price"
-                    [formControl]="control.get('price')"
-                  />
-                </mat-form-field>
-              </div>
+              <div *ngIf="checkDeleted(control); then thenBlock"></div>
+              <ng-template #thenBlock>
+                <div class="menu-item-name column">
+                  <mat-form-field
+                    appearance="outline"
+                    color="accent"
+                    class="fill"
+                  >
+                    <mat-label>Name</mat-label>
+                    <input
+                      matInput
+                      placeholder="Name"
+                      [formControl]="control.get('name')"
+                    />
+                  </mat-form-field>
+                </div>
+                <div class="menu-item-name column">
+                  <mat-form-field
+                    appearance="outline"
+                    color="accent"
+                    class="fill"
+                  >
+                    <mat-label>Price</mat-label>
+                    <input
+                      type="number"
+                      min="1"
+                      max="150"
+                      step="1"
+                      matInput
+                      placeholder="Price"
+                      [formControl]="control.get('price')"
+                    />
+                  </mat-form-field>
+                </div>
+                <div class="menu-item-name column">
+                  <button
+                    class="deleteButton"
+                    mat-raised-button
+                    color="warn"
+                    (click)="deleteCatalogItem(control)"
+                  >
+                    Delete
+                  </button>
+                </div>
+              </ng-template>
             </div>
           </div>
         </div>
       </div>
     </div>
-
+    <div class="row actions">
+      <button mat-raised-button color="primary" (click)="addCatalogueItem()">
+        Add item
+      </button>
+    </div>
     <div class="row actions">
       <button mat-raised-button color="accent" (click)="save()">Save</button>
     </div>

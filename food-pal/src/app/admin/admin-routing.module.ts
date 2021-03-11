@@ -16,7 +16,7 @@ const routes: Routes = [
         component: ProvidersComponent,
       },
       {
-        path: 'providers/first',
+        path: 'providers/:providerId',
         component: ProviderEditComponent,
       },
     ],

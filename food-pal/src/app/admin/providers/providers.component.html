@@ -2,7 +2,11 @@
   <table mat-table [dataSource]="datasource" class="mat-elevation-z8" matSort>
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>No.</th>
-      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      <td mat-cell *matCellDef="let element">
+        <button mat-raised-button color="accent" [routerLink]="[element.id]">
+          <span>{{ element.id }}</span>
+        </button>
+      </td>
     </ng-container>
 
     <ng-container matColumnDef="name">
