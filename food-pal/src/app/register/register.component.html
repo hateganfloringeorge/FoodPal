@@ -1,0 +1,77 @@
+<div class="container">
+  <form class="edit-form" [formGroup]="formGroup">
+    <h2>Create your account</h2>
+    <div class="row">
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label>First Name</mat-label>
+        <input matInput placeholder="Given name" formControlName="firstName" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label>Last Name</mat-label>
+        <input matInput placeholder="Surname" formControlName="lastName" />
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field appearance="outline" color="accent" class="fill">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          placeholder="Email address"
+          formControlName="email"
+          type="email"
+        />
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field appearance="outline" color="accent" class="fill">
+        <mat-label>Phone Number</mat-label>
+        <input
+          matInput
+          placeholder="Number"
+          formControlName="phone"
+          type="tel"
+        />
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field appearance="outline" color="accent" class="fill">
+        <mat-label>Address</mat-label>
+        <input matInput placeholder="Address" formControlName="address" />
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field appearance="outline" color="accent" class="fill">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          placeholder="Minimum 8 characters"
+          formControlName="password"
+          type="password"
+          id="password"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="outline" color="accent" class="fill">
+        <mat-label>Confirm</mat-label>
+        <input
+          matInput
+          placeholder="Confirm password"
+          formControlName="repeatPassword"
+          type="password"
+          id="repeatPassword"
+        />
+      </mat-form-field>
+    </div>
+    <mat-checkbox class="checkbox" (change)="changeVisibility()">
+      Show password
+    </mat-checkbox>
+    <div class="action">
+      <p>
+        Already have an account?
+        <a routerLink="/login" routerLinkActive="active"> Log in here! </a>
+      </p>
+    </div>
+    <div class="action">
+      <button mat-raised-button color="accent" type="submit">Sign up</button>
+    </div>
+  </form>
+</div>

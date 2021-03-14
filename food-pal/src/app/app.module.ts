@@ -12,8 +12,9 @@ import { AboutComponent } from './about/about.component';
 import { LoginComponent } from './login/login.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { FormsModule } from '@angular/forms';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RegisterComponent } from './register/register.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 const materialImports = [
@@ -21,15 +22,17 @@ const materialImports = [
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
+  MatCheckboxModule,
 ];
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, AboutComponent, LoginComponent],
+  declarations: [AppComponent, HomeComponent, AboutComponent, LoginComponent, RegisterComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     ...materialImports,
   ],
   providers: [],

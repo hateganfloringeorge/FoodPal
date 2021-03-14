@@ -11,3 +11,14 @@
     place-items: center;
     background: inherit;
 }
+
+.glass-card {
+    background: #f0f0f0;
+}
+
+.action {
+    flex: 0;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+}
