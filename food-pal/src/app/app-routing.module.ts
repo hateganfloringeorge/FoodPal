@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './about/about.component';
+import { AuthenticatedGuard } from './authenticated.guard';
 import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+
 
 const routes: Routes = [
   {
@@ -13,14 +16,20 @@ const routes: Routes = [
     component: AboutComponent,
   },
   {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
     path: 'admin',
     loadChildren: () =>
       import('./admin/admin.module').then((module) => module.AdminModule),
+    canActivate: [AuthenticatedGuard],
   },
   { 
     path: 'i-am-hungry',
     loadChildren: () =>
-    import('./order/order.module').then(m => m.OrderModule) 
+      import('./order/order.module').then(m => m.OrderModule),
+    canActivate: [AuthenticatedGuard],
   },
 ];
 

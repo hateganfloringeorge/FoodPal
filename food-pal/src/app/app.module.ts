@@ -9,15 +9,27 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
+import { LoginComponent } from './login/login.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
 
-const materialImports = [MatButtonModule, MatIconModule];
+
+
+const materialImports = [
+  MatButtonModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+];
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, AboutComponent],
+  declarations: [AppComponent, HomeComponent, AboutComponent, LoginComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
     ...materialImports,
   ],
   providers: [],

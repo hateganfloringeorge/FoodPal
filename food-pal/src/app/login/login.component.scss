@@ -1,0 +1,13 @@
+:host {
+    background: inherit;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    place-content: center;
+    place-items: center;
+    background: inherit;
+}
