@@ -37,7 +37,7 @@ namespace FoodPal.Auth
 
             services.Configure<IdentityOptions>(options => 
             {
-                options.Password.RequiredLength = 40;
+                options.Password.RequiredLength = 6;
                 options.Password.RequireDigit = true;
                 options.User.RequireUniqueEmail = true;
                 options.Lockout.MaxFailedAccessAttempts = 3;

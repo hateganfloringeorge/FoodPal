@@ -1,8 +1,10 @@
 ﻿using FoodPal.Auth.Context;
 using FoodPal.Auth.Dto;
 using IdentityModel;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -19,31 +21,58 @@ namespace FoodPal.Auth.Controllers
     [ApiController]
     public class UserController: ControllerBase
     {
-        private readonly UserManager<AppUser> userManager;
+        private readonly UserManager<AppUser> _userManager;
 
         public UserController(UserManager<AppUser> userManager)
         {
-            this.userManager = userManager;
+            this._userManager = userManager;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetUsers()
+        {
+            try
+            {
+                var users = await _userManager.Users.ToListAsync();
+                return Ok(users);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.ToString());
+            }
         }
 
         [HttpPost]
         public async Task<IActionResult> RegisterUser(RegisterUserRequest request)
         {
+            var newUser = new AppUser()
+            {
+                FirstName = request.FirstName,
+                LastName = request.LastName,
+                UserName = request.Username,
+                PasswordHash = request.Password,
+                Email = request.Email,
+                PhoneNumber = request.PhoneNumber,
+                Address = request.Address,
+            };
 
+            var result = await _userManager.CreateAsync(newUser, request.Password);
+            if (result.Errors.Count() != 0)
+                return BadRequest(result.Errors.ToArray());
             return Ok();
         }
 
         [HttpPost("login")]
         public async Task<IActionResult> LoginUser(LoginUserRequest request)
         {
-            var user = await userManager.FindByIdAsync(request.Username); 
+            var user = await _userManager.FindByNameAsync(request.Username); 
 
-            if(user != null && !await userManager.IsLockedOutAsync(user))
+            if(user != null && !await _userManager.IsLockedOutAsync(user))
             {
-                var isPasswordValid = await userManager.CheckPasswordAsync(user, request.Password);
+                var isPasswordValid = await _userManager.CheckPasswordAsync(user, request.Password);
                 if(isPasswordValid)
                 {
-                    var userRoles = await userManager.GetRolesAsync(user);
+                    var userRoles = await _userManager.GetRolesAsync(user);
 
                     var tokenHandler = new JwtSecurityTokenHandler();
 
@@ -66,10 +95,10 @@ namespace FoodPal.Auth.Controllers
                 }
                 else
                 {
-                    await userManager.AccessFailedAsync(user);
-                    if(await userManager.GetLockoutEndDateAsync(user) != null)
+                    await _userManager.AccessFailedAsync(user);
+                    if(await _userManager.GetLockoutEndDateAsync(user) != null)
                     {
-                        await userManager.SetLockoutEnabledAsync(user, true);
+                        await _userManager.SetLockoutEnabledAsync(user, true);
                     }
                 }
             }

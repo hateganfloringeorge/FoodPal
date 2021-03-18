@@ -4,14 +4,16 @@ using FoodPal.Auth.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FoodPal.Auth.Migrations
 {
     [DbContext(typeof(AppIdentityContext))]
-    partial class AppIdentityContextModelSnapshot : ModelSnapshot
+    [Migration("20210318083047_Testing")]
+    partial class Testing
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,9 +28,6 @@ namespace FoodPal.Auth.Migrations
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
-
-                    b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -97,13 +96,13 @@ namespace FoodPal.Auth.Migrations
                         {
                             Id = "ADMIN",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ab7f8ba8-f37a-4115-a284-fcf3fcec2ec6",
+                            ConcurrencyStamp = "38fda6c5-526d-4115-8730-024ee23a6654",
                             Email = "cristian.hosu@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAEAACcQAAAAEHDy5PA+gK5kD7fi38Pn5AI4Dh36Lwa/e42PqPqglFJCR3xhoddYkSGscGrjkZt/Qw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKlI6L6IQFs03AtuInK2gjCABxfu2nQHKrOj6rf7MDQ2E3JSLZNT1riBfkryf8bpIA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "5bf19072-adc8-4140-a65a-8822a8fbfffe",
+                            SecurityStamp = "bcde63bc-330e-499e-9172-79312728f002",
                             TwoFactorEnabled = false,
                             UserName = "cristian.hosu@gmail.com"
                         });
@@ -160,21 +159,21 @@ namespace FoodPal.Auth.Migrations
                         new
                         {
                             Id = "client",
-                            ConcurrencyStamp = "12d57950-621c-44bf-a7c0-091f0e03a6b6",
+                            ConcurrencyStamp = "15e52b67-ba4a-477a-b1dc-fdabe0919e7a",
                             Name = "Client",
                             NormalizedName = "CLIENT"
                         },
                         new
                         {
                             Id = "delivery",
-                            ConcurrencyStamp = "0b25a190-f860-4a0c-8030-07c16c155625",
+                            ConcurrencyStamp = "75ffe318-90aa-4260-a4c0-ec3c1dc4c1e4",
                             Name = "Delivery Person",
                             NormalizedName = "DELIVERY_PERSON"
                         },
                         new
                         {
                             Id = "admin",
-                            ConcurrencyStamp = "84e4ac44-0756-4026-8226-954de2401fe4",
+                            ConcurrencyStamp = "86fa296f-c0c5-4619-90cf-d24afa4e49ab",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
