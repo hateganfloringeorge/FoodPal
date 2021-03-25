@@ -41,6 +41,12 @@
     </div>
     <div class="row">
       <mat-form-field appearance="outline" color="accent" class="fill">
+        <mat-label>Username</mat-label>
+        <input matInput placeholder="Username" formControlName="username" />
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field appearance="outline" color="accent" class="fill">
         <mat-label>Password</mat-label>
         <input
           matInput
@@ -71,7 +77,14 @@
       </p>
     </div>
     <div class="action">
-      <button mat-raised-button color="accent" type="submit">Sign up</button>
+      <button mat-raised-button color="accent" (click)="register()">
+        Sign up
+      </button>
+    </div>
+    <div class="action">
+      <button mat-raised-button color="accent" (click)="showUsers()">
+        Show Users
+      </button>
     </div>
   </form>
 </div>

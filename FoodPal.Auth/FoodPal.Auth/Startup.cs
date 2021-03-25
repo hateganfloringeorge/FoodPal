@@ -77,6 +77,13 @@ namespace FoodPal.Auth
 
             app.UseRouting();
 
+            app.UseCors(builder => builder
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .SetIsOriginAllowed((host) => true)
+                .AllowCredentials()
+            );
+
             app.UseAuthentication();
             app.UseAuthorization();
 

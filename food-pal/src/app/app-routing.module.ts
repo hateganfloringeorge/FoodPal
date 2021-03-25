@@ -4,7 +4,6 @@ import { AboutComponent } from './about/about.component';
 import { AuthenticatedGuard } from './authenticated.guard';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
 
 
 const routes: Routes = [
@@ -21,8 +20,9 @@ const routes: Routes = [
     component: LoginComponent,
   },
   {
-    path: 'register',
-    component: RegisterComponent,
+    path: 'user',
+    loadChildren: () =>
+      import('./user/user.module').then((module) => module.UserModule),
   },
   {
     path: 'admin',
