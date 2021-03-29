@@ -62,6 +62,12 @@ namespace FoodPal.Auth.Controllers
             return Ok();
         }
 
+        [HttpOptions]
+        public IActionResult OptionsSettings()
+        {
+            return Ok("Merge bine");
+        }
+
         [HttpPost("login")]
         public async Task<IActionResult> LoginUser(LoginUserRequest request)
         {

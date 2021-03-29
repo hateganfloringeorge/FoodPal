@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { User } from '../models/user';
 
 @Injectable()
@@ -25,6 +25,17 @@ export class UsersService {
     ).pipe(
       catchError(this.errorHandler)
   );
+  }
+
+  getOptions(): Observable<any> {
+    return this.http.options(
+      `${this.userRootUrl}`
+    ).pipe(
+      tap( // Log the result or error
+        data => console.log( data),
+        error => console.log( error)
+      )
+    );;
   }
 
   errorHandler(error: HttpErrorResponse) {

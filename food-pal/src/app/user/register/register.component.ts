@@ -63,6 +63,11 @@ export class RegisterComponent implements OnInit {
     console.log(users);
   }
 
+  testOptions()
+  {
+    var options = this.userSvc.getOptions();
+    console.log(options);
+  }
 
   getFormValidationErrors() {
     Object.keys(this.formGroup.controls).forEach((key) => {
