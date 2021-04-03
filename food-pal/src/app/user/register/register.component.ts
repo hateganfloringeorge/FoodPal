@@ -53,20 +53,18 @@ export class RegisterComponent implements OnInit {
     newUser.password = userForm.password;
     newUser.phoneNumber = userForm.repeatPassword;
     newUser.address = userForm.address;
-    var resp = this.userSvc.postUser(newUser);
-    console.log(resp);
+    newUser.username = userForm.username;
+    this.userSvc.postUser(newUser).subscribe(resp => console.log(resp));
   }
 
   showUsers()
   {
-    var users = this.userSvc.getUsers();
-    console.log(users);
+    this.userSvc.getUsers().subscribe(resp => console.log(resp));
   }
 
   testOptions()
   {
-    var options = this.userSvc.getOptions();
-    console.log(options);
+    this.userSvc.getOptions().subscribe(resp => console.log(resp));
   }
 
   getFormValidationErrors() {
